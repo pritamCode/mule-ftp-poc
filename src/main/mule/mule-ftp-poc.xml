@@ -6,7 +6,7 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="20d3bb9d-147e-47c3-89ca-75d4c253fb19" >
-		<http:listener-connection host="0.0.0.0" port="8082" />
+		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<flow name="mule-ftp-pocFlow" doc:id="84c31a7e-f0b2-4339-919c-5fa8522756c8" >
 		<http:listener doc:name="Listener" doc:id="e0174e7c-337f-4e97-a685-ad9f7de5dd24" config-ref="HTTP_Listener_config" path="/greet/{city}"/>
