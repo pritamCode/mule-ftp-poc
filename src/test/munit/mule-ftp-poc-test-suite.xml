@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="mule-ftp-poc-test-suite.xml" />
+	<munit:test name="mule-ftp-poc-test-suite-mule-ftp-pocFlowTest" doc:id="c44a4007-7715-4401-ba0b-98470c1a9302" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="57c7c301-9c17-497d-8fea-3b0e99a67a91" >
+				<munit:attributes value='#[{
+	"queryParams" : {
+	"name" : "john"
+	},
+	"uriParams" : {
+	"city" : "NYC"
+	}	
+}]' />
+		</munit:set-event>
+			<flow-ref doc:name="Flow-ref to mule-ftp-pocFlow" doc:id="0cf0808b-dd14-4f30-bdc3-e11c15d9da52" name="mule-ftp-pocFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call" doc:id="fb49f345-8829-42ff-8900-324e0a7616d4" processor="logger">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="13dba688-ef4c-4b14-8bc4-63f9f4429556" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+			<munit-tools:verify-call doc:name="Verify call" doc:id="d8dafdf1-9ef4-45b5-ad65-2078b8951e3c" processor="ee:transform">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Transform Message" attributeName="doc:name" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
