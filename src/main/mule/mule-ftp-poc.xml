@@ -10,6 +10,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="mule-ftp-pocFlow" doc:id="84c31a7e-f0b2-4339-919c-5fa8522756c8" >
 		<http:listener doc:name="Listener" doc:id="e0174e7c-337f-4e97-a685-ad9f7de5dd24" config-ref="HTTP_Listener_config" path="/greet/{city}"/>
+		<logger level="INFO" doc:name="Logger" doc:id="13dba688-ef4c-4b14-8bc4-63f9f4429556" message="start of the flow #[flow.name]"/>
 		<logger level="INFO" doc:name="Logger" doc:id="84b7961c-5a9b-4c9b-b802-3ced8811ecca" message="#['\n'] executing the flow : #[flow.name ++ &quot; for the user &quot; ++ attributes.queryParams.name ++ &quot; from &quot; ++ attributes.uriParams.city]"/>
 		<ee:transform doc:name="Transform Message" doc:id="fc342e4a-16b9-4905-afe3-a5885c29cbc5" >
 			<ee:message >
